@@ -1,15 +1,15 @@
 <div class="container">
     <div class="head"><h4><i class="fas fa-user mr-3"></i>Add Employee Details</h4></div>
-    <form [formGroup]="regform" (ngSubmit)="regform.valid">
+    <form [formGroup]="regform" (ngSubmit)="regform.valid" novalidate>
         <ul class="details p-0 d-flex">
-            <li class="details-list"><a class="details-list-item"><span class="step">1</span>Personal details</a></li>
-            <li class="details-list"><a class="details-list-item"><span class="step">2</span>Employee details</a></li>
-            <li class="details-list"><a class="details-list-item"><span class="step">3</span>Policies</a></li>
+            <li class="details-list"><a class="details-list-item"><span class="step" style="background-color: #4d80bf">1</span>Personal details</a></li>
+            <li class="details-list"><a class="details-list-item"><span class="step" [ngClass]="{bg: b=='step'}">2</span>Employee details</a></li>
+            <li class="details-list"><a class="details-list-item"><span class="step" [ngClass]="{bg: b=='step2'}">3</span>Policies</a></li>
             <li class="details-list"><a class="details-list-item"><span class="step">4</span>Proof Document</a></li>
             <li class="details-list"><a class="details-list-item"><span class="step">5</span>Certificates</a></li>
             <li class="details-list"><a class="details-list-item6"><span class="step">6</span>Pay Roll</a></li>
         </ul>
-    <div class="row" [ngClass]="{'hide': b=='step2'}">
+    <div class="row" [ngClass]="{hide: b=='step'}" [ngClass]="{active: b=='step2'}">
         <div class="col-md-3 col-sm-6">
         <div class="form-group">
             <label class="control-label">Salutation</label>
@@ -20,7 +20,7 @@
                 <option>Mrs.</option>
                 <option>Ms.</option>
             </select>
-            <div *ngIf="regform.get('saluation').errors && regform.get('saluation').touched">
+            <div *ngIf="regform.get('saluation').errors && (regform.get('saluation').touched)">
             <small class="text-danger" *ngIf="regform.get('saluation').errors.required">salutation code is required</small>
             </div>
         </div>
@@ -39,6 +39,7 @@
             <div class="form-group">
                     <label class="control-label">middlename</label>
                     <input type="text" class="form-control" placeholder="Enter middlename">
+                    
                 </div>
         </div>
         <div class="col-md-3 col-sm-6">
@@ -51,48 +52,52 @@
                     </div>
                 </div>
         </div>
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-3 col-sm-6" >
             <div class="form-group">
                     <label class="control-label">DOB</label>
                     <my-date-picker name="dob" [options]="myDatePickerOptions" formControlName="dob" placeholder="dd/mm/yyyy">
                 </my-date-picker>
+                <div *ngIf="regform.get('dob').errors && (regform.get('dob').touched)">
+                    <small class="text-danger" *ngIf="regform.get('dob').errors.required">date of birth is required</small>
+                </div>
                 </div>
         </div>
         <div class="col-md-3 col-sm-6">
             <div class="form-group">
                     <label class="control-label">Gender</label>
-                    <span><input type="radio" name="gender" class="mr-2"><label>Male</label></span>
-                <span class="ml-3"><input type="radio" name="gender" class="mr-2"><label>Female</label></span>
+                    <span><input type="radio" name="gender" value="male" formControlName="gender" class="mr-2"><label>Male</label></span>
+                <span class="ml-3"><input type="radio" name="gender" value="female" formControlName="gender" class="mr-2"><label>Female</label></span>
             </div>
     </div>
     <div class="col-md-3 col-sm-6">
             <div class="form-group">
                     <label class="control-label">Blood group</label>
-                    <select type="text" class="form-control" placeholder="Select blood-group">
-                        <option>Select blood group</option>
-                        <option value="A+">A+</option>
-                        <option value="A-">A-</option>
-                        <option value="B+">B+</option>
-                        <option value="B-">B-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="AB-">AB-</option>
-                        <option value="O+">O+</option>
-                        <option value="O-">O-</option>
+                    <select type="text" class="form-control">
+                        <option value="">Select blood group</option>
+                        <option>A+</option>
+                        <option>A-</option>
+                        <option>B+</option>
+                        <option>B-</option>
+                        <option>AB+</option>
+                        <option>AB-</option>
+                        <option>O+</option>
+                        <option>O-</option>
                     </select>
+                    
                 </div>
                 </div>
             <div class="col-md-3 col-sm-6">
                 <div class="form-group">
                     <label class="control-label">Marital status</label>
-                    <span><input type="radio" name="status" class="mr-2" (click)="a='step1'"><label>married</label></span>
-                    <span class="ml-3"><input type="radio" name="status" class="mr-2" (click)="a='step2'"><label>single</label></span>
+                    <span><input type="radio" name="status" class="mr-2" (click)="a='step1'" value="married" formControlName="status"><label>married</label></span>
+                    <span class="ml-3"><input type="radio" name="status" class="mr-2" (click)="a='step2'" value="single" formControlName="status"><label>single</label></span>
                 </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                         <div class="form-group">
                             <label class="control-label">Personal email</label>
                             <input type="text" class="form-control" placeholder="Enter email" formControlName="email">
-                            <div *ngIf="regform.get('email').errors && regform.get('email').touched">
+                            <div *ngIf="regform.get('email').errors && (regform.get('email').touched)">
                                 <small class="text-danger" *ngIf="regform.get('email').errors.required">email must be filled</small>
                                 <small class="text-danger" *ngIf="regform.get('email').errors.pattern">email must be valid email</small>
                             </div>
@@ -101,191 +106,42 @@
                         <div class="col-md-3 col-sm-6">
                         <div class="form-group">
                                 <label class="control-label">Phone number</label>
-                                <input type="phonenumber" formControlName="phonenum" class="form-control" placeholder="Enter number">
-                                <div *ngIf="regform.get('phonenum').errors && regform.get('phonenum').touched">
-                                    <small class="text-danger" *ngIf="regform.get('phonenum').errors.pattern">phone number is required</small>
+                                <input type="Phonenumber" formControlName="phonenum" class="form-control" placeholder="Enter number">
+                                <div *ngIf="regform.get('phonenum').errors && (regform.get('phonenum').touched)">
+                                    <small class="text-danger" *ngIf="regform.get('phonenum').errors.required">phone number is required</small>
+                                    <small class="text-danger" *ngIf="(regform.get('phonenum').errors.minlength)">phonenumber must be 10 numbers</small>
+                                    <small class="text-danger" *ngIf="(regform.get('phonenum').errors.maxlength)">phonenumber must be 10 numbers</small>
                                 </div>
                             </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="form-group">
                                  <label class="control-label">Religion</label>
-                                 <input type="text" class="form-control" placeholder="Select religion">
+                                 <input type="text" class="form-control" placeholder="Select religion" formControlName="religion">
+                                 <div *ngIf="regform.get('religion').errors && (regform.get('religion').touched)">
+                                    <small class="text-danger" *ngIf="regform.get('religion').errors.required">religion is required</small>
+                                </div>
                                  </div>
                                  </div>
                                  <div class="col-md-3 col-sm-6">
                                         <div class="form-group">
                                             <label class="control-label">Nationality</label>
-                                            <input type="text" class="form-control" placeholder="Select nationality">
+                                            <input type="text" class="form-control" placeholder="Select nationality" formControlName="nationality">
+                                            <div *ngIf="regform.get('nationality').errors && (regform.get('nationality').touched)">
+                                                <small class="text-danger" *ngIf="regform.get('nationality').errors.required">nationality is required</small>
+                                            </div>
                                         </div>
                                         </div>
     
-
+                                        <hr class="col-sm-11">
 </div>
-
-<div class="row hide" [ngClass]="{'active1': b=='step2'}">
-    <div class="col-md-3 col-sm-6">
-    <div class="form-group">
-        <label class="control-label">Salutation</label>
-        <select type="text" class="form-control" formControlName="saluation">
-            <option value="">Select Salutation</option>
-            <option>Dr.</option>
-            <option>Mr.</option>
-            <option>Mrs.</option>
-            <option>Ms.</option>
-        </select>
-        <div *ngIf="regform.get('saluation').errors && regform.get('saluation').touched">
-        <small class="text-danger" *ngIf="regform.get('saluation').errors.required">salutation code is required</small>
-        </div>
-    </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-    <div class="form-group">
-            <label class="control-label">firstname</label>
-            <input type="text" class="form-control" formControlName="firstname" placeholder="Enter firstname">
-            <div *ngIf="regform.get('firstname').errors && (regform.get('firstname').touched)">
-            <small class="text-danger" *ngIf="regform.get('firstname').errors.required">Firstname required</small>
-            <small class="text-danger" *ngIf="regform.get('firstname').errors.minlength">Firstname must be atleast 6 characters</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-        <div class="form-group">
-                <label class="control-label">middlename</label>
-                <input type="text" class="form-control" placeholder="Enter middlename">
-            </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-        <div class="form-group">
-                <label class="control-label">lastname</label>
-                <input type="text" class="form-control" formControlName="lastname" placeholder="Enter lastname">
-                <div *ngIf="regform.get('lastname').errors && (regform.get('lastname').touched)">
-                <small class="text-danger" *ngIf="regform.get('lastname').errors.required">lastname required</small>
-                <small class="text-danger" *ngIf="regform.get('lastname').errors.minlength">lastname must be atleast 6 characters</small>
-                </div>
-            </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-        <div class="form-group">
-                <label class="control-label">DOB</label>
-                <my-date-picker name="dob" [options]="myDatePickerOptions" formControlName="dob" placeholder="dd/mm/yyyy">
-            </my-date-picker>
-            </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-        <div class="form-group">
-                <label class="control-label">Gender</label>
-                <span><input type="radio" name="gender" class="mr-2"><label>Male</label></span>
-            <span class="ml-3"><input type="radio" name="gender" class="mr-2"><label>Female</label></span>
-        </div>
-</div>
-
-        <div class="col-md-3 col-sm-6">
-            <div class="form-group">
-                <label class="control-label">Marital status</label>
-                <span><input type="radio" name="status" class="mr-2" (click)="a='step1'"><label>married</label></span>
-                <span class="ml-3"><input type="radio" name="status" class="mr-2" (click)="a='step2'"><label>single</label></span>
-            </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                    <div class="form-group">
-                        <label class="control-label">Personal email</label>
-                        <input type="text" class="form-control" placeholder="Enter email" formControlName="email">
-                        <div *ngIf="regform.get('email').errors && regform.get('email').touched">
-                            <small class="text-danger" *ngIf="regform.get('email').errors.required">email must be filled</small>
-                            <small class="text-danger" *ngIf="regform.get('email').errors.pattern">email must be valid email</small>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                    <div class="form-group">
-                            <label class="control-label">Phone number</label>
-                            <input type="phonenumber" formControlName="phonenum" class="form-control" placeholder="Enter number">
-                            <div *ngIf="regform.get('phonenum').errors && regform.get('phonenum').touched">
-                                <small class="text-danger" *ngIf="regform.get('phonenum').errors.pattern">phone number is required</small>
-                            </div>
-                        </div>
-                        </div>
-                        
-
-
-</div>
-
-
-<div class="row hide" [ngClass]="{'active1': b=='step2'}">
-    <div class="col-md-3 col-sm-6">
-    <div class="form-group">
-        <label class="control-label">Salutation</label>
-        <select type="text" class="form-control" formControlName="saluation">
-            <option value="">Select Salutation</option>
-            <option>Dr.</option>
-            <option>Mr.</option>
-            <option>Mrs.</option>
-            <option>Ms.</option>
-        </select>
-        <div *ngIf="regform.get('saluation').errors && regform.get('saluation').touched">
-        <small class="text-danger" *ngIf="regform.get('saluation').errors.required">salutation code is required</small>
-        </div>
-    </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-    <div class="form-group">
-            <label class="control-label">firstname</label>
-            <input type="text" class="form-control" formControlName="firstname" placeholder="Enter firstname">
-            <div *ngIf="regform.get('firstname').errors && (regform.get('firstname').touched)">
-            <small class="text-danger" *ngIf="regform.get('firstname').errors.required">Firstname required</small>
-            <small class="text-danger" *ngIf="regform.get('firstname').errors.minlength">Firstname must be atleast 6 characters</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-        <div class="form-group">
-                <label class="control-label">middlename</label>
-                <input type="text" class="form-control" placeholder="Enter middlename">
-            </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-        <div class="form-group">
-                <label class="control-label">lastname</label>
-                <input type="text" class="form-control" formControlName="lastname" placeholder="Enter lastname">
-                <div *ngIf="regform.get('lastname').errors && (regform.get('lastname').touched)">
-                <small class="text-danger" *ngIf="regform.get('lastname').errors.required">lastname required</small>
-                <small class="text-danger" *ngIf="regform.get('lastname').errors.minlength">lastname must be atleast 6 characters</small>
-                </div>
-            </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-        <div class="form-group">
-                <label class="control-label">DOB</label>
-                <my-date-picker name="dob" [options]="myDatePickerOptions" formControlName="dob" placeholder="dd/mm/yyyy">
-            </my-date-picker>
-            </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-        <div class="form-group">
-                <label class="control-label">Gender</label>
-                <span><input type="radio" name="gender" class="mr-2"><label>Male</label></span>
-            <span class="ml-3"><input type="radio" name="gender" class="mr-2"><label>Female</label></span>
-        </div>
-</div>
-
-        <div class="col-md-3 col-sm-6">
-            <div class="form-group">
-                <label class="control-label">Marital status</label>
-                <span><input type="radio" name="status" class="mr-2" (click)="a='step1'"><label>married</label></span>
-                <span class="ml-3"><input type="radio" name="status" class="mr-2" (click)="a='step2'"><label>single</label></span>
-            </div>
-        </div>          
-</div>
-
-<hr>
-<div class="row">
+<div class="row" [ngClass]="{hide: b=='step'}">
     <div class="col-12"><h4>Emergency Contact Details</h4></div>
     <div class="col-md-3 col-sm-6">
     <div class="form-group">
         <label class="control-label">name</label>
         <input type="text" class="form-control" placeholder="Enter name" formControlName="name">
-        <div *ngIf="regform.get('name').errors && regform.get('name').touched">
+        <div *ngIf="regform.get('name').errors && (regform.get('name').touched)">
             <small class="text-danger" *ngIf="regform.get('name').errors.required">name is required</small>
         </div>
     </div>
@@ -294,31 +150,31 @@
     <div class="form-group">
             <label class="control-label">Relation</label>
             <select type="text" class="form-control" placeholder="Select">
-            <option value="select">Select</option>
-            <option value="Father">Father</option>
-            <option value="Mother">Mother</option>
-            <option value="Gurdian">Gurdian</option>    
-            </select>
+            <option value="">Select</option>
+            <option >Father</option>
+            <option >Mother</option>
+            <option>Gurdian</option>    
+            </select>           
         </div>
         </div>
         <div class="col-md-3 col-sm-6">
                 <div class="form-group">
                     <label class="control-label">Contact No</label>
                     <input type="text" class="form-control" placeholder="Entercontact No" formControlName="contactnum">
-                    <div *ngIf="regform.get('contactnum').errors && regform.get('contactnum').touched">
+                    <div *ngIf="regform.get('contactnum').errors && (regform.get('contactnum').touched)">
                     <small class="text-danger" *ngIf="regform.get('contactnum').errors.required">contact number is required</small>
                     </div>
                 </div>
                 </div>
+                <hr class="col-sm-11">
 </div>
-<hr>
-<div class="row">
+<div class="row" [ngClass]="{hide: b=='step'}">
         <div class="col-12"><h4>Family Details</h4></div>
         <div class="col-md-3 col-sm-6">
         <div class="form-group">
             <label class="control-label">Father</label>
             <input type="text" class="form-control" placeholder="Enter father name" formControlName="fathername">
-            <div *ngIf="regform.get('fathername').errors && regform.get('fathername').touched">
+            <div *ngIf="regform.get('fathername').errors && (regform.get('fathername').touched)">
             <small class="text-danger" *ngIf="regform.get('fathername').errors.required">Father name is required</small>
             </div>
         </div>
@@ -327,7 +183,7 @@
         <div class="form-group">
                 <label class="control-label">Mother</label>
                 <input type="text" class="form-control" placeholder="Enter mother name" formControlName="mothername">
-                <div *ngIf="regform.get('mothername').errors && regform.get('mothername').touched">
+                <div *ngIf="regform.get('mothername').errors && (regform.get('mothername').touched)">
                     <small class="text-danger" *ngIf="regform.get('mothername').errors.required">Mother name is required</small>
                 </div>
             </div>
@@ -336,26 +192,26 @@
                 <div class="form-group">
                         <label class="control-label">spouse name</label>
                         <input type="text" class="form-control" placeholder="Enter spouse name" formControlName="spousename">
-                        <div *ngIf="regform.get('spousename').errors && regform.get('spousename').touched">
+                        <div *ngIf="regform.get('spousename').errors && (regform.get('spousename').touched)">
                             <small class="text-danger" *ngIf="regform.get('spousename').errors.required">spouse name is required</small>
                         </div>
                     </div>
                     </div>
+                    <hr class="col-sm-11">
     </div>
-    <hr>
-    <div class="row">
+    <div class="row" [ngClass]="{hide: b=='step'}">
             <div class="col-12"><h4>Address Details</h4></div>
             <div class="col-md-3 col-sm-6">
                     <div class="form-group">
                         <label class="control-label">Residentional No</label>
-                        <input type="text" class="form-control" placeholder="Enter Residentional No">
+                        <input type="text" class="form-control" placeholder="Enter Residentional No">                      
                     </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                     <div class="form-group">
                             <label class="control-label">Address line1</label>
                             <input type="text" class="form-control" formControlName="address1" placeholder="Enter Address line1">
-                            <div *ngIf="regform.get('address1').errors && regform.get('address1').touched">
+                            <div *ngIf="regform.get('address1').errors && (regform.get('address1').touched)">
                                 <small class="text-danger" *ngIf="regform.get('address1').errors.required">address line1 is required</small>
                             </div>
                         </div>
@@ -364,23 +220,25 @@
                         <div class="form-group">
                                 <label class="control-label">Address line2</label>
                                 <input type="text" class="form-control" placeholder="Enter Address line2" formControlName="address2">
-                            <div *ngIf="regform.get('address2').errors && regform.get('address2').touched">
+                            <div *ngIf="regform.get('address2').errors && (regform.get('address2').touched)">
                                 <small class="text-danger" *ngIf="regform.get('address2').errors.required">address line2 is required</small>
                             </div>
                     </div>
-                </div>
-                
+                </div>              
                     <div class="col-md-3 col-sm-6">
                         <div class="form-group">
                                 <label class="control-label">locality/village</label>
-                                <input type="text" class="form-control" placeholder="Enter locality">
+                                <input type="text" class="form-control" placeholder="Enter locality" formControlName="locality">
+                                <div *ngIf="regform.get('locality').errors && (regform.get('locality').touched)">
+                                    <small class="text-danger" *ngIf="regform.get('locality').errors.required">locality is required</small>
+                                </div>
                             </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="form-group">
                                 <label class="control-label">City</label>
                                 <input type="text" class="form-control" placeholder="Enetr city" formControlName="city">
-                                <div *ngIf="regform.get('city').errors && regform.get('city').touched">
+                                <div *ngIf="regform.get('city').errors && (regform.get('city').touched)">
                                     <small class="text-danger" *ngIf="regform.get('city').errors.required">city is required</small>
                                 </div>
                             </div>
@@ -390,8 +248,8 @@
                             <div class="form-group">
                                     <label class="control-label">State</label>
                                     <input type="text" class="form-control" placeholder="Enter state" formControlName="state">
-                                    <div *ngIf="regform.get('state').errors && regform.get('state').touched">
-                                        <small class="text-danger" *ngIf="regform.get('state').errors.required">city is required</small>
+                                    <div *ngIf="regform.get('state').errors && (regform.get('state').touched)">
+                                        <small class="text-danger" *ngIf="regform.get('state').errors.required">state is required</small>
                                     </div>
                                 </div>
                                 </div>
@@ -399,8 +257,8 @@
                             <div class="form-group">
                                     <label class="control-label">Country</label>
                                     <input type="text" class="form-control" placeholder="Enter Country" formControlName="country">
-                                    <div *ngIf="regform.get('country').errors && regform.get('country').touched">
-                                        <small class="text-danger" *ngIf="regform.get('country').errors.required">city is required</small>
+                                    <div *ngIf="regform.get('country').errors && (regform.get('country').touched)">
+                                        <small class="text-danger" *ngIf="regform.get('country').errors.required">country is required</small>
                                     </div>
                                 </div>
                                 </div>
@@ -408,14 +266,282 @@
                                         <div class="form-group">
                                                 <label class="control-label">Pin code</label>
                                                 <input type="text" class="form-control" placeholder="Enter pin code..." formControlName="pincode">
-                                                <div *ngIf="regform.get('pincode').errors && regform.get('pincode').touched">
-                                                    <small class="text-danger" *ngIf="regform.get('pincode').errors.required">city is required</small>
+                                                <div *ngIf="regform.get('pincode').errors && (regform.get('pincode').touched)">
+                                                    <small class="text-danger" *ngIf="regform.get('pincode').errors.required">pincode is required</small>
                                                 </div>
                                             </div>
-                                            </div>
+                                        </div>
+                                
     </div>
-    <div class="col-12 text-right">
-    <button [disabled]="!regform.valid" (click)="submit(x)" (click)="b='step2'">Next</button>
+    <div class="text-right">
+    <button data-step="employee-details" disabled>Next</button>
+    </div>
+
+    <!-- <form [formGroup]="regform"  (ngSubmit)="regform.valid" novalidate> -->
+        <div class="row" id="employee-details">
+            <div class="col-md-3 col-sm-6">
+            <div class="form-group">
+                <label class="control-label">Employee Id</label>
+                <input type="text" class="form-control" formControlName="employeeid" placeholder="Enter employeeid">
+                <div *ngIf="regform.get('employeeid').errors && regform.get('employeeid').touched">
+                <small class="text-danger" *ngIf="regform.get('employeeid').errors.required">employee id is required</small>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Company email</label>
+                    <input type="text" class="form-control" placeholder="Enter email" formControlName="Companyemail">
+                    <div *ngIf="regform.get('Companyemail').errors &&regform.get('Companyemail').touched">
+                        <small class="text-danger" *ngIf="regform.get('Companyemail').errors.required">email must be filled</small>
+                        <small class="text-danger" *ngIf="regform.get('Companyemail').errors.pattern">email must be valid email</small>
+                    </div>
+                </div>
+                </div>
+            
+             <div class="col-md-3 col-sm-6">
+                <div class="form-group">
+                        <label class="control-label">Official no</label>
+                        <input type="text" class="form-control" placeholder="Enter number" formControlName="officialno">
+                        <div *ngIf="regform.get('officialno').errors && (regform.get('officialno').touched)">
+                        <small class="text-danger" *ngIf="regform.get('officialno').errors.required">official no is required</small>
+                    </div>
+            </div>
+            </div>
+            
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group">
+                        <label class="control-label">Date Of joining</label>
+                        <my-date-picker name="dob" [options]="myDatePickerOptions" formControlName="doj" placeholder="dd/mm/yyyy">
+                    </my-date-picker>
+                    </div>
+            </div>
+                    <div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                <label class="control-label">Location</label>
+                                <input type="text" class="form-control" placeholder="Enter location" formControlName="location">
+                                <div *ngIf="regform.get('location').errors && regform.get('location').touched">
+                                    <small class="text-danger" *ngIf="regform.get('location').errors.required">select location</small>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                    <label class="control-label">Business Unit</label>
+                                    <input type="text" formControlName="businessunit" class="form-control" placeholder="Select business unit">
+                                    <div *ngIf="regform.get('businessunit').errors && regform.get('businessunit').touched">
+                                        <small class="text-danger" *ngIf="regform.get('businessunit').errors.required">business unit is required</small>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                            <label class="control-label">Department</label>
+                                            <input type="text" formControlName="department" class="form-control" placeholder="select department">
+                                            <div *ngIf="regform.get('department').errors && regform.get('department').touched">
+                                                <small class="text-danger" *ngIf="regform.get('department').errors.required">department is required</small>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                    <label class="control-label">Sub Department</label>
+                                                    <input type="text" formControlName="subdepartment" class="form-control" placeholder="select subdepartment">
+                                                    <div *ngIf="regform.get('subdepartment').errors && regform.get('subdepartment').touched">
+                                                        <small class="text-danger" *ngIf="regform.get('subdepartment').errors.required">subdepartment is required</small>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="col-md-3 col-sm-6">
+                                                    <div class="form-group">
+                                                            <label class="control-label">Employee Type</label>
+                                                            <input type="text" formControlName="employeetype" class="form-control" placeholder="select employeetype">
+                                                            <div *ngIf="regform.get('employeetype').errors && regform.get('employeetype').touched">
+                                                                <small class="text-danger" *ngIf="regform.get('employeetype').errors.required">employee type is required</small>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-6">
+                                                            <div class="form-group">
+                                                                    <label class="control-label">Designation</label>
+                                                                    <input type="text" formControlName="designation" class="form-control" placeholder="select designation">
+                                                                    <div *ngIf="regform.get('designation').errors && regform.get('designation').touched">
+                                                                        <small class="text-danger" *ngIf="regform.get('designation').errors.required">designation is required</small>
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6">
+                                                                    <div class="form-group">
+                                                                            <label class="control-label">Reporting Manager</label>
+                                                                            <input type="text" formControlName="repmanager" class="form-control" placeholder="select Reporting Manager">
+                                                                            <div *ngIf="regform.get('repmanager').errors && regform.get('repmanager').touched">
+                                                                                <small class="text-danger" *ngIf="regform.get('repmanager').errors.required">Reporting Manager is required</small>
+                                                                            </div>
+                                                                        </div>
+                                                                        </div>
+                                                                        <div class="col-md-3 col-sm-6">
+                                                                            <div class="form-group">
+                                                                                    <label class="control-label">Notice period days</label>
+                                                                                    <input type="text" formControlName="notice" class="form-control" placeholder="select period days">
+                                                                                    <div *ngIf="regform.get('notice').errors && regform.get('notice').touched">
+                                                                                        <small class="text-danger" *ngIf="regform.get('notice').errors.required">period days required</small>
+                                                                                    </div>
+                                                                                </div>
+                                                                                </div>
+                                                                                <div class="col-md-3 col-sm-6">
+                                                                                    <div class="form-group">
+                                                                                            <label class="control-label">Biometric ID</label>
+                                                                                            <input type="text" formControlName="Biometric" class="form-control" placeholder="Enter Biometric id">
+                                                                                            <div *ngIf="regform.get('Biometric').errors && regform.get('Biometric').touched">
+                                                                                                <small class="text-danger" *ngIf="regform.get('Biometric').errors.required">ID is required</small>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        </div>
+                                                                            
+                                                                                    
+                                                                                   
+        
+        <div class="col-sm-12">
+            <button (click)="b='step2'">Previous</button>
+            <button data-step="" disabled>Next</button>
+        </div>
+        </div>
+<!-- </form> -->
+
+
+
+<!-- <form [formGroup]="regform"  (ngSubmit)="regform.valid" novalidate>
+<div class="row hide" [ngClass]="{'active1': b=='step'}">
+    <div class="col-md-3 col-sm-6">
+    <div class="form-group">
+        <label class="control-label">Employee Id</label>
+        <input type="text" class="form-control" formControlName="employeeid" placeholder="Enter employeeid">
+        <div *ngIf="regform.get('employeeid').errors && regform.get('employeeid').touched">
+        <small class="text-danger" *ngIf="regform.get('employeeid').errors.required">employee id is required</small>
+        </div>
+    </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="form-group">
+            <label class="control-label">Company email</label>
+            <input type="text" class="form-control" placeholder="Enter email" formControlName="Companyemail">
+            <div *ngIf="regform.get('Companyemail').errors &&regform.get('Companyemail').touched">
+                <small class="text-danger" *ngIf="regform.get('Companyemail').errors.required">email must be filled</small>
+                <small class="text-danger" *ngIf="regform.get('Companyemail').errors.pattern">email must be valid email</small>
+            </div>
+        </div>
+        </div>
+    
+     <div class="col-md-3 col-sm-6">
+        <div class="form-group">
+                <label class="control-label">Official no</label>
+                <input type="text" class="form-control" placeholder="Enter number" formControlName="officialno">
+                <div *ngIf="regform.get('officialno').errors && (regform.get('officialno').touched)">
+                <small class="text-danger" *ngIf="regform.get('officialno').errors.required">official no is required</small>
+            </div>
+    </div>
+    </div>
+    
+    <div class="col-md-3 col-sm-6">
+        <div class="form-group">
+                <label class="control-label">Date Of joining</label>
+                <my-date-picker name="dob" [options]="myDatePickerOptions" formControlName="doj" placeholder="dd/mm/yyyy">
+            </my-date-picker>
+            </div>
+    </div>
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label">Location</label>
+                        <input type="text" class="form-control" placeholder="Enter location" formControlName="location">
+                        <div *ngIf="regform.get('location').errors && regform.get('location').touched">
+                            <small class="text-danger" *ngIf="regform.get('location').errors.required">select location</small>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                    <div class="form-group">
+                            <label class="control-label">Business Unit</label>
+                            <input type="text" formControlName="businessunit" class="form-control" placeholder="Select business unit">
+                            <div *ngIf="regform.get('businessunit').errors && regform.get('businessunit').touched">
+                                <small class="text-danger" *ngIf="regform.get('businessunit').errors.required">business unit is required</small>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                    <label class="control-label">Department</label>
+                                    <input type="text" formControlName="department" class="form-control" placeholder="select department">
+                                    <div *ngIf="regform.get('department').errors && regform.get('department').touched">
+                                        <small class="text-danger" *ngIf="regform.get('department').errors.required">department is required</small>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                            <label class="control-label">Sub Department</label>
+                                            <input type="text" formControlName="subdepartment" class="form-control" placeholder="select subdepartment">
+                                            <div *ngIf="regform.get('subdepartment').errors && regform.get('subdepartment').touched">
+                                                <small class="text-danger" *ngIf="regform.get('subdepartment').errors.required">subdepartment is required</small>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                    <label class="control-label">Employee Type</label>
+                                                    <input type="text" formControlName="employeetype" class="form-control" placeholder="select employeetype">
+                                                    <div *ngIf="regform.get('employeetype').errors && regform.get('employeetype').touched">
+                                                        <small class="text-danger" *ngIf="regform.get('employeetype').errors.required">employee type is required</small>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="col-md-3 col-sm-6">
+                                                    <div class="form-group">
+                                                            <label class="control-label">Designation</label>
+                                                            <input type="text" formControlName="designation" class="form-control" placeholder="select designation">
+                                                            <div *ngIf="regform.get('designation').errors && regform.get('designation').touched">
+                                                                <small class="text-danger" *ngIf="regform.get('designation').errors.required">designation is required</small>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-6">
+                                                            <div class="form-group">
+                                                                    <label class="control-label">Reporting Manager</label>
+                                                                    <input type="text" formControlName="repmanager" class="form-control" placeholder="select Reporting Manager">
+                                                                    <div *ngIf="regform.get('repmanager').errors && regform.get('repmanager').touched">
+                                                                        <small class="text-danger" *ngIf="regform.get('repmanager').errors.required">Reporting Manager is required</small>
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6">
+                                                                    <div class="form-group">
+                                                                            <label class="control-label">Notice period days</label>
+                                                                            <input type="text" formControlName="notice" class="form-control" placeholder="select period days">
+                                                                            <div *ngIf="regform.get('notice').errors && regform.get('notice').touched">
+                                                                                <small class="text-danger" *ngIf="regform.get('notice').errors.required">period days required</small>
+                                                                            </div>
+                                                                        </div>
+                                                                        </div>
+                                                                        <div class="col-md-3 col-sm-6">
+                                                                            <div class="form-group">
+                                                                                    <label class="control-label">Biometric ID</label>
+                                                                                    <input type="text" formControlName="Biometric" class="form-control" placeholder="Enter Biometric id">
+                                                                                    <div *ngIf="regform.get('Biometric').errors && regform.get('Biometric').touched">
+                                                                                        <small class="text-danger" *ngIf="regform.get('Biometric').errors.required">ID is required</small>
+                                                                                    </div>
+                                                                                </div>
+                                                                                </div>
+                                                                    
+                                                                            
+                                                                           
+
+<div class="col-sm-12">
+    <button (click)="b='step2'">Previous</button>
+    <button [disabled]="!regform.valid" (click)="b='step2'">Next</button>
+</div>
+</div> -->
+<input #box>
+<button  (click)="send(box.value)">send</button>
+<div *ngFor="let i of values">
+    <p>{{i}}</p>
 </div>
 </form>
-</div>

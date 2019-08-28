@@ -14,6 +14,8 @@ import { OffBoardingComponent } from './off-boarding/off-boarding.component';
 import { FooterComponent } from './footer/footer.component';
 import { Pageheader1Component } from './pageheader1/pageheader1.component';
 import { MyDatePickerModule } from 'mydatepicker';
+import { TimeAttendanceComponent } from './time-attendance/time-attendance.component';
+import { ShiftsComponent } from './shifts/shifts.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { MyDatePickerModule } from 'mydatepicker';
     ExitprocessComponent,
     OffBoardingComponent,
     FooterComponent,
-    Pageheader1Component   
+    Pageheader1Component,
+    TimeAttendanceComponent,
+    ShiftsComponent   
   ],
   imports: [
     BrowserModule,

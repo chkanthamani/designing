@@ -1,0 +1,11 @@
+<div class="container">
+    <form [formGroup]="regform">
+        <div class="row form-group">
+            <div class="col-3">     
+            <p>{{(value) || (mydate | date : 'mediumDate')}}</p>
+            <my-date-picker (dateChanged)="open($event)" [options]="myDatePickerOptions">
+        </my-date-picker>
+        </div>
+    </div>
+    </form>
+</div>
