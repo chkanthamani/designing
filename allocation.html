@@ -1,0 +1,186 @@
+<div class="row" *ngIf="role == 'hr'">
+  <div class="col-md-3 col-sm-6 col-xs-12 cursor" [routerLink]="['/assets/pending-allocation']">
+    <div class="boarding-tile-set">
+      <div class="boarding-tile boarding-tile-primary"
+        [ngClass]="{'active': (pageType =='pending-allocation'),'spinner-boarding':(spinner == true)}">
+        <div class="boarding-tile-content">
+          <div class="boarding-tile-value small">
+            {{allocationListPending.length}}</div>
+          <div class="boarding-tile-title text-grey-light">{{ _sharedService.translation('Pending') }}</div>
+        </div>
+        <div class="boarding-tile-content">
+          <div class="boarding-tile-value small">
+            {{allocationList.length}}</div>
+          <div class="boarding-tile-title text-grey-light">{{ _sharedService.translation('Previous') }}</div>
+        </div>
+        <div class="boarding-tile-icon">
+          <div class="icon-info-custom-icon">
+            <i class="ti-alert"></i>
+          </div>
+          <div class="boarding-tile-icon-title">{{ _sharedService.translation('Allocations') }}</div>
+        </div>
+      </div>
+      <div class="boarding-tile-no-data" *ngIf="allocationList.length == 0 && spinner == true">
+        <span><i class="fas fa-circle-notch fa-spin"></i></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-sm-6 col-xs-12 cursor" [routerLink]="['/assets/pending-transfer']">
+    <div class="boarding-tile-set">
+      <div class="boarding-tile boarding-tile-danger"
+        [ngClass]="{'active': (pageType =='pending-transfer'),'spinner-boarding':(spinner == true)}">
+        <div class="boarding-tile-content">
+          <div class="boarding-tile-value small">{{transferListPending.length}}</div>
+          <div class="boarding-tile-title text-grey-light">{{ _sharedService.translation('Pending') }}</div>
+        </div>
+        <div class="boarding-tile-content">
+          <div class="boarding-tile-value small">{{transferList.length}}</div>
+          <div class="boarding-tile-title text-grey-light">{{ _sharedService.translation('Previous') }}</div>
+        </div>
+        <div class="boarding-tile-icon">
+          <div class="icon-info-custom-icon">
+            <i class="fas fa-exchange-alt"></i>
+          </div>
+          <div class="boarding-tile-icon-title">{{ _sharedService.translation('Deallocation') }}</div>
+        </div>
+      </div>
+      <div class="boarding-tile-no-data" *ngIf="transferList.length ===0 && spinner == true">
+        <span><i class="fas fa-circle-notch fa-spin"></i></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-sm-6 col-xs-12 cursor" [routerLink]="['/assets/raise-allocation']">
+    <div class="boarding-tile boarding-tile-success" [ngClass]="{'active': (pageType =='raise-allocation')}">
+      <div class="boarding-tile-content">
+        <div class="boarding-tile-single-title">{{ _sharedService.translation('Raise Allocation') }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-sm-6 col-xs-12 cursor" [routerLink]="['/assets/raise-transfers']">
+    <div class="boarding-tile boarding-tile-info" [ngClass]="{'active': (pageType =='raise-transfers')}">
+      <div class="boarding-tile-content">
+        <div class="boarding-tile-single-title">{{ _sharedService.translation('Raise deallocation') }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="role == 'rm'">
+  <div class="col-md-3 col-sm-6 col-xs-12 cursor" [routerLink]="['/assets/pending-allocation']">
+    <div class="boarding-tile-set">
+      <div class="boarding-tile boarding-tile-primary"
+        [ngClass]="{'active': (pageType =='pending-allocation'),'spinner-boarding':(spinner == true)}">
+        <div class="boarding-tile-content">
+          <div class="boarding-tile-value small">{{allocationListPending.length}}</div>
+          <div class="boarding-tile-title text-grey-light">{{ _sharedService.translation('pending') }}</div>
+        </div>
+        <div class="boarding-tile-content">
+          <div class="boarding-tile-value small">{{allocationList.length}}</div>
+          <div class="boarding-tile-title text-grey-light">{{ _sharedService.translation('Previous') }}</div>
+        </div>
+        <div class="boarding-tile-icon">
+          <div class="icon-info-custom-icon">
+            <i class="ti-alert"></i>
+          </div>
+          <div class="boarding-tile-icon-title">{{ _sharedService.translation('Allocations') }}</div>
+        </div>
+      </div>
+      <div class="boarding-tile-no-data" *ngIf="allocationList.length == 0 && spinner == true">
+        <span><i class="fas fa-circle-notch fa-spin"></i></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-sm-6 col-xs-12 cursor" [routerLink]="['/assets/pending-transfer']">
+    <div class="boarding-tile-set">
+      <div class="boarding-tile boarding-tile-danger"
+        [ngClass]="{'active': (pageType =='pending-transfer'),'spinner-boarding':(spinner == true)}">
+        <div class="boarding-tile-content">
+          <div class="boarding-tile-value small">{{transferListPending.length}}</div>
+          <div class="boarding-tile-title text-grey-light">{{ _sharedService.translation('pending') }}</div>
+        </div>
+        <div class="boarding-tile-content">
+          <div class="boarding-tile-value small">{{transferList.length}}</div>
+          <div class="boarding-tile-title text-grey-light">{{ _sharedService.translation('Previous') }}</div>
+        </div>
+        <div class="boarding-tile-icon">
+          <div class="icon-info-custom-icon">
+            <i class="fas fa-exchange-alt"></i>
+          </div>
+          <div class="boarding-tile-icon-title">{{ _sharedService.translation('Deallocation') }}</div>
+        </div>
+      </div>
+      <div class="boarding-tile-no-data" *ngIf="transferList.length == 0 && spinner == true">
+        <span><i class="fas fa-circle-notch fa-spin"></i></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-sm-6 col-xs-12 cursor" [routerLink]="['/assets/raise-allocation']">
+    <div class="boarding-tile boarding-tile-success" [ngClass]="{'active': (pageType =='raise-allocation')}">
+      <div class="boarding-tile-content">
+        <div class="boarding-tile-single-title">{{ _sharedService.translation('Raise Allocation') }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-sm-6 col-xs-12 cursor" [routerLink]="['/assets/raise-transfers']">
+    <div class="boarding-tile boarding-tile-info" [ngClass]="{'active': (pageType =='raise-transfers')}">
+      <div class="boarding-tile-content">
+        <div class="boarding-tile-single-title">{{ _sharedService.translation('Raise deallocation') }}</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row" *ngIf="role == 'assetmanager'">
+  <div class="col-md-3 col-sm-6 col-xs-12 cursor">
+    <div class="boarding-tile boarding-tile-primary">
+      <div class="boarding-tile-content">
+        <div class="boarding-tile-value">23</div>
+        <div class="boarding-tile-title">{{ _sharedService.translation('Pending Allocations') }}</div>
+      </div>
+      <div class="boarding-tile-icon">
+        <div class="icon-info-custom-icon">
+          <i class="ti-alert"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-sm-6 col-xs-12 cursor">
+    <div class="boarding-tile boarding-tile-danger">
+      <div class="boarding-tile-content">
+        <div class="boarding-tile-value">31</div>
+        <div class="boarding-tile-title">{{ _sharedService.translation('Pending Deallocations') }}</div>
+      </div>
+      <div class="boarding-tile-icon">
+        <div class="icon-info-custom-icon">
+          <i class="ti-reload"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-sm-6 col-xs-12 cursor" [routerLink]="['/assets/raise-allocation']">
+    <div class="boarding-tile boarding-tile-info " [ngClass]="{'active': (pageType =='raise-allocation')}">
+      <div class="boarding-tile-content">
+        <div class="boarding-tile-single-title">{{ _sharedService.translation('Stock List') }}</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-3 col-sm-6 col-xs-12 cursor" [routerLink]="['/assets/raise-allocation']">
+    <div class="boarding-tile boarding-tile-success " [ngClass]="{'active': (pageType =='raise-allocation')}">
+      <div class="boarding-tile-content">
+        <div class="boarding-tile-single-title">{{ _sharedService.translation('Add New Stock') }}</div>
+      </div>
+    </div>
+  </div>
+
+</div>

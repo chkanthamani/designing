@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 import { IMyDpOptions } from 'mydatepicker';
 import * as $ from 'jquery';
 @Component({
@@ -33,16 +33,12 @@ export class PageContentComponent implements OnInit {
     this.regform=this.formBuilder.group({
     saluation: new FormControl('',[Validators.required]),
     firstname: new FormControl('',[Validators.required,Validators.minLength(6)]),
-    // middlename:new FormControl('',[Validators.required]),
     religion:new FormControl('',[Validators.required]),
     nationality:new FormControl('',[Validators.required]),
     locality:new FormControl('',[Validators.required]),
-    // address:new FormControl('',[Validators.required]),
-    // relation:new FormControl('',[Validators.required]),
     dob:new FormControl('',[Validators.required]),
     gender:new FormControl('',[Validators.required]),
     status:new FormControl('',[Validators.required]),
-    // blood:new FormControl('',[Validators.required]),
     lastname:new FormControl('',[Validators.required,Validators.minLength(6)]),
     email:new FormControl('',[Validators.required,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$')]),
     phonenum:new FormControl('',[Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
@@ -57,7 +53,6 @@ export class PageContentComponent implements OnInit {
     state:new FormControl('',[Validators.required]),
     country:new FormControl('',[Validators.required]),
     pincode:new FormControl('',[Validators.required]),
-
     employeeid: new FormControl({value:'',disabled:false},[Validators.required]),
     Companyemail: new FormControl('',[Validators.required,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$')]),
     officialno: new FormControl('',[Validators.required]),
@@ -71,27 +66,21 @@ export class PageContentComponent implements OnInit {
     repmanager: new FormControl('',[Validators.required]),
     notice: new FormControl('',[Validators.required]),
     Biometric: new FormControl('',[Validators.required]),
+    array: this.formBuilder.array([
+      this.formBuilder.control('')
+    ])
     });
-    // this.employeeform=this.formBuilder.group({
-      // employeeid: new FormControl('',[Validators.required]),
-      // Companyemail: new FormControl('',[Validators.required,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$')]),
-      // officialno: new FormControl('',[Validators.required]),
-      // doj: new FormControl('',[Validators.required]),
-      // location: new FormControl('',[Validators.required]),
-      // businessunit: new FormControl('',[Validators.required]),
-      // department: new FormControl('',[Validators.required]),
-      // subdepartment: new FormControl('',[Validators.required]),
-      // employeetype: new FormControl('',[Validators.required]),
-      // designation: new FormControl('',[Validators.required]),
-      // repmanager: new FormControl('',[Validators.required]),
-      // notice: new FormControl('',[Validators.required]),
-      // Biometric: new FormControl('',[Validators.required]),
-    // });
     $(document).ready(function(){
       $("").click(function(){
 
       });
     });
+  }
+  get array() {
+    return this.regform.get('array') as FormArray;
+  }
+  addAlias() {
+    this.array.push(this.formBuilder.control(''));
   }
   // get fname(){return this.regform.controls;}
 //   onSubmit() {
@@ -102,10 +91,11 @@ export class PageContentComponent implements OnInit {
 //     else
 //       alert("success");
 // }
-submit(x){
+array1=[];
+submit(x:any){
   // alert(JSON.stringify(this.regform.value));
-  // alert('success');
-  console.log(x);
+  this.array1.push(this.regform.value)
+  console.log(this.array1);
 }
 values: any = [];
   send(value: string) {

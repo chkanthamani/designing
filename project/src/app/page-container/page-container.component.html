@@ -1,13 +1,30 @@
-<app-sidebar></app-sidebar>
-<div class="page-container">
-        <div class="page-header">   
-        <h6>Dashboards</h6>
-        </div>
-        <div class="head">
-        <h1 class="text-light">Overview</h1>
-        <div class="datepicker">   
-            <my-date-picker name="mydate" [options]="myDatePickerOptions"></my-date-picker>   
-        </div>
-        </div>   
-    <hr>
+<div class="container">
+    <div class="title">1. To Do List</div>
+    <div class="input">
+        <input type="text" class="form-control" placeholder="Enter Name" [(ngModel)]="list" name="list">
+        <button class="btn btn-primary" (click)="add()">Add</button>
+    </div>
+    <div class="candidates">
+        <ul class="candidate-list">
+            <li class="list" *ngFor="let item of name; let i= index">
+                <input type="checkbox" class="form-control checkbox">
+                <span class="name">{{item}}</span>
+                <button class="delete" (click)="remove(i)"><i class="fas fa-trash-alt"></i></button>
+            </li>
+        </ul>
+    </div>
+    <button class="btn btn-secondary mr-2" (click)="foreach()">Foreach</button>
+    <button class="btn btn-secondary mr-2" (click)="map()">Map</button>
+    <button class="btn btn-secondary mr-2" (click)="filter()">Filter</button>
+    <button class="btn btn-secondary mr-2" (click)="reduce()">Reduce</button>
+    <button class="btn btn-secondary mr-2" (click)="reduceright()">Reduceright</button>
+    <button class="btn btn-secondary mr-2" (click)="find()">Find</button>
+    <button class="btn btn-secondary mr-2" (click)="findwhere()">FindWhere</button>
+    <button class="btn btn-secondary mr-2" (click)="invoke()">Invoke</button>
+    <button class="btn btn-secondary mr-2" (click)="indexby()">Indexby</button>
+    <button class="btn btn-secondary mr-2" (click)="countby()">Countby</button>
+    <button class="btn btn-secondary mr-2" (click)="indexof()">IndexOf</button>
+</div>
+<div class="container">
+    <app-forms></app-forms>
 </div>

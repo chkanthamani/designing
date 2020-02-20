@@ -1,0 +1,11 @@
+<div class="product-list">
+    <h4 class="p-2">Product List</h4>
+    <ul class="list-details">
+        <li *ngFor="let product of products; let i = index">
+            <span>{{i+1}}.</span>
+            <a [routerLink]="['/products', i]">
+               {{product.productname}}
+            </a>
+        </li>
+    </ul>
+</div>

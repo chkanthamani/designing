@@ -1,0 +1,423 @@
+// list style ul elements
+
+.menu-list
+    list-style-type none
+    margin 0
+    padding 0
+    display flex
+    align-items center
+    .list-elements
+        padding 5px 10px
+        cursor pointer
+        .list-link
+            text-decoration none
+            &:hover
+                color blue
+                text-decoration underline
+
+// max-width 
+.page-content
+    max-width 1250px
+    margin auto
+    
+.header-section
+    min-height 70px
+    &-content
+        background #ddeaf6
+        display flex
+        justify-content space-between
+        position fixed
+        width 100%
+        z-index 100
+        &-data
+            display flex
+            align-items center
+            padding 0px 20px
+            .section-logo
+                width 70px
+                height @width
+                margin-right 30px
+                img
+                    width 100%
+                    height @width
+                    object-fit contain
+            .menu-list
+                .list-elements
+                    .list-link
+                        font-size 13px
+            .border
+                border-right 1px solid #d5d5d5
+.section-one
+    height calc(100% - 82px)
+    background #ddeaf6
+    &-body
+        position relative
+        height 100%
+        &-title
+            width 925px
+            padding-top 65px
+            .title
+                font-size 100px
+                font-family inherit
+                margin 0px
+                line-height 1
+        &-img
+            width 500px
+            height 690px
+            position absolute
+            right 0%
+            top 0%
+            max-height 100%
+            img
+                width 100%
+                height @width
+                object-fit contain
+        &-search
+            position absolute
+            left 0%
+            top 48%
+            display flex
+            .search-options
+                position relative
+                border-right 1px solid #d5d5d5
+                .search-field
+                    padding 40px 100px
+                    border none
+                    &:focus
+                        outline 0
+                        box-shadow none
+                    &:last-child
+                        border-right none
+                        background #5353ef
+                        padding 40px 20px
+                        text-align center
+                        color white
+                        &::placeholder
+                            color white
+                i
+                    position absolute
+                    top 43%
+                    left 17%
+                    color #4a4a4a
+                    font-size 16px
+                .icon
+                    position absolute
+                    right 13%
+                    top 40%
+.section-two
+    background #eef1f4
+    &-companynames
+        padding-bottom 82px
+        .footer-text
+            font-size 14px
+            position absolute
+            bottom 6%
+            left 10%
+            .job-link
+                color #5353ef
+        .company-content
+            padding 50px
+            display flex
+            align-items center
+            justify-content space-around
+            .company-name
+                color gray
+                font-size 15px
+            .companies
+                display flex
+                align-items center
+                .logo
+                    width 100px
+                    height 30px
+                    padding 0px 20px
+                    img
+                        width 100%
+                        height @width
+                        object-fit contain
+    &-body
+        &-category
+            font-size 35px
+            margin-bottom 35px
+            font-weight 500
+            line-height 1.4
+        &-container
+            display flex
+            flex-wrap wrap
+            margin-right -15px
+            margin-left -15px
+            position relative
+            z-index 1
+            .colmns
+                flex 0 0 17.25%
+                width 100%
+                padding-right 15px
+                padding-left 15px
+                .card
+                    background white
+                    position relative
+                    border none
+                    margin-bottom 1.5rem
+                    box-shadow 0 1px 3px rgba(148,148,148,0.3)
+                    padding 20px
+                    min-height 130px
+                    line-height 1.5
+                    cursor pointer
+                    transition 0.2s all
+                    .card-icons
+                        font-size 22px
+                        margin-bottom 30px
+                        &.blue
+                            color #5d61d2
+                        &.green
+                            color #20cc8c
+                        &.orange
+                            color #d48a2f
+                        &.light-green
+                            color #59e2b6
+                        &.violet
+                            color #b144de
+                        &.yellow
+                            color #e4d523
+                    .card-title
+                        font-size 17px
+                        font-weight 500
+                    &:hover
+                        background #f55858
+                        color white
+                        background-image url('../../assets/card-active-lines.png')
+                        background-size 66%
+                        background-position top right
+                        background-repeat no-repeat
+                        .card-icons
+                            color white
+                        .card-title
+                            text-decoration underline
+            .hide-card
+                visibility hidden
+            .box-img
+                width 468px
+                height @width
+                position absolute
+                top -20px
+                left -172px
+                z-index -1
+                opacity 0.6
+                img
+                    width 100%
+                    height @width
+                    object-fit contain
+.section-three
+    background #eef1f4
+    &-body
+        padding-top 110px 
+        .job-title
+            font-size 35px
+            font-weight 500
+        .job-sub-title
+            color gray
+            font-size 13px
+            margin-bottom 44px
+            margin-top 10px
+            .job-link
+                color #5353ef
+                cursor pointer
+                &:hover
+                    text-decoration underline
+        .container
+            display flex
+            flex-wrap wrap
+            margin-right -15px
+            margin-left -15px
+            z-index 1
+            position relative
+            .colmns
+                flex 0 0 30.25%
+                width 100%
+                padding-right 15px
+                padding-left 15px
+                .card
+                    background white
+                    position relative
+                    min-height 236px
+                    border none
+                    margin-bottom 1.5rem
+                    box-shadow 0 1px 3px rgba(148,148,148,0.3)
+                    padding 35px
+                    line-height 1.5
+                    transition 0.2s all
+                    .jobs-title
+                        padding-bottom 20px
+                        .dot
+                            position absolute
+                            width 16px
+                            height @width
+                            border-radius 50%
+                            &.orange
+                                background orange
+                            &.purple
+                                background #ba33ff
+                            &.green
+                                background #30e130
+                            &.yellow
+                                background #bebe0b
+                            &.blue
+                                background #1a64d4
+                        .desg
+                            font-size 13px
+                            margin-left 30px
+                    .jobs-main-title
+                        padding-bottom 20px
+                        font-size 20px
+                        font-weight 600
+                    .jobs-location
+                        color gray
+                        font-size 13px
+                        .name
+                            margin-right 24px
+                        .time
+                            position relative
+                            &:before
+                                content ''
+                                position absolute
+                                left -9px
+                                width 4px
+                                height 4px
+                                background #cecece
+                                border-radius 50%
+                                top 5px
+                    .jobs-info
+                        display flex
+                        align-items center
+                        position absolute
+                        bottom 30px
+                        .logo
+                            width 50px
+                            height @width
+                            margin-right 20px
+                            img
+                                width 100%
+                                height @width
+                                object-fit cover
+                        .days
+                            font-size 13px
+                            color black
+                            span
+                                color gray
+                    .startup-jobs
+                        width 60px
+                        height @width
+                        padding-bottom 20px
+                        img
+                            width 100%
+                            height @width
+                            object-fit cover
+                    .startup-main-title
+                        .startup-title
+                            margin-bottom 6px
+                            font-size 20px
+                            font-weight 600
+                        .startup-desc
+                            color gray
+                            font-size 14px
+                    .startup-list-details
+                        position relative
+                        top 40px
+                        .startup-list-content
+                            display flex
+                            align-items center
+                            justify-content space-between
+                            .jobs-location
+                                .name
+                                    font-size 13px
+                                    color black
+                                    font-weight 500
+                                .time
+                                    position relative
+                                    &:before
+                                        content ''
+                                        position absolute
+                                        left -9px
+                                        width 4px
+                                        height 4px
+                                        background #cecece
+                                        border-radius 50%
+                                        top 5px
+                            .startup-job-list
+                                color blue
+                                font-size 15px
+            .sidebox-img
+                width 152px
+                height 230px
+                position absolute
+                right -2px
+                bottom -34px
+                opacity 0.4
+                z-index -1
+                img
+                    width 100%
+                    height @width
+                    object-fit contain
+        .all-jobs-list
+            text-align center
+            padding 10px 0px
+            padding-top 25px
+            position relative
+            .show-jobs
+                padding 20px 40px
+                color #fff
+                font-size 17px
+                background #4250f7
+                box-shadow none
+                outline 0
+                border 0
+                border-radius 2px
+                cursor pointer
+            .btn-img
+                width 220px
+                height @width
+                position absolute
+                right 38%
+                bottom -121%
+                opacity 0.7
+                img
+                    width 100%
+                    height @width
+                    object-fit contain
+        .hub-details
+            text-align center
+            padding-top 56px
+            padding-bottom 45px
+            .hub-title
+                font-size 16px
+                margin-bottom 14px
+            .hub-locations
+                display flex
+                align-items center
+                justify-content space-evenly
+                width 46%
+                margin auto
+                margin-top 20px
+                .name
+                    font-size 20px
+                    cursor pointer
+                    &:hover
+                        color #5353ef
+                        text-decoration underline
+.footer-section
+    background #262829
+    padding 55px 94px
+    color white
+    .footer-content
+        display flex
+        align-items center
+        justify-content space-between
+        .title
+            font-size 36px
+        .menu-list
+            .list-elements
+                padding 0px 15px
+                .list-link
+                    color #adadad
+                    &:hover
+                        color white
+                        text-decoration none

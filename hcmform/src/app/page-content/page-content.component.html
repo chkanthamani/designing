@@ -1,18 +1,18 @@
 <div class="container">
     <div class="head"><h4><i class="fas fa-user mr-3"></i>Add Employee Details</h4></div>
-    <form [formGroup]="regform" (ngSubmit)="regform.valid" novalidate>
+    <form [formGroup]="regform" (ngSubmit)="regform.valid" novalidate [ngClass]="{'hide': form=='step1','active':form=='step2'}">
         <ul class="details p-0 d-flex">
             <li class="details-list"><a class="details-list-item"><span class="step" style="background-color: #4d80bf">1</span>Personal details</a></li>
-            <li class="details-list"><a class="details-list-item"><span class="step" [ngClass]="{bg: b=='step'}">2</span>Employee details</a></li>
-            <li class="details-list"><a class="details-list-item"><span class="step" [ngClass]="{bg: b=='step2'}">3</span>Policies</a></li>
+            <li class="details-list"><a class="details-list-item"><span class="step">2</span>Employee details</a></li>
+            <li class="details-list"><a class="details-list-item"><span class="step">3</span>Policies</a></li>
             <li class="details-list"><a class="details-list-item"><span class="step">4</span>Proof Document</a></li>
             <li class="details-list"><a class="details-list-item"><span class="step">5</span>Certificates</a></li>
             <li class="details-list"><a class="details-list-item6"><span class="step">6</span>Pay Roll</a></li>
         </ul>
-    <div class="row" [ngClass]="{hide: b=='step'}" [ngClass]="{active: b=='step2'}">
+    <div class="row" >          
         <div class="col-md-3 col-sm-6">
         <div class="form-group">
-            <label class="control-label">Salutation</label>
+            <label class="control-label">Salutation</label>         
             <select type="text" class="form-control" formControlName="saluation">
                 <option value="">Select Salutation</option>
                 <option>Dr.</option>
@@ -22,24 +22,30 @@
             </select>
             <div *ngIf="regform.get('saluation').errors && (regform.get('saluation').touched)">
             <small class="text-danger" *ngIf="regform.get('saluation').errors.required">salutation code is required</small>
-            </div>
+            </div>      
         </div>
         </div>
+        <!-- <div formArrayName="array">
+                <button (click)="addAlias()">Add Alias</button>
+                <div *ngFor="let item of array.controls;let i=index">
+                    <input type="text" formControlName="i">
+                </div>
+            </div> -->
         <div class="col-md-3 col-sm-6">
         <div class="form-group">
-                <label class="control-label">firstname</label>
-                <input type="text" class="form-control" formControlName="firstname" placeholder="Enter firstname">
+                <label class="control-label">firstname</label>               
+                <input type="text" class="form-control" formControlName="firstname" name="firstname" placeholder="Enter firstname">
                 <div *ngIf="regform.get('firstname').errors && (regform.get('firstname').touched)">
                 <small class="text-danger" *ngIf="regform.get('firstname').errors.required">Firstname required</small>
                 <small class="text-danger" *ngIf="regform.get('firstname').errors.minlength">Firstname must be atleast 6 characters</small>
                 </div>
-            </div>
+            </div>            
         </div>
         <div class="col-md-3 col-sm-6">
             <div class="form-group">
                     <label class="control-label">middlename</label>
                     <input type="text" class="form-control" placeholder="Enter middlename">
-                    
+                   
                 </div>
         </div>
         <div class="col-md-3 col-sm-6">
@@ -51,7 +57,7 @@
                     <small class="text-danger" *ngIf="regform.get('lastname').errors.minlength">lastname must be atleast 6 characters</small>
                     </div>
                 </div>
-        </div>
+        </div>      
         <div class="col-md-3 col-sm-6" >
             <div class="form-group">
                     <label class="control-label">DOB</label>
@@ -199,7 +205,7 @@
                     </div>
                     <hr class="col-sm-11">
     </div>
-    <div class="row" [ngClass]="{hide: b=='step'}">
+    <div class="row">
             <div class="col-12"><h4>Address Details</h4></div>
             <div class="col-md-3 col-sm-6">
                     <div class="form-group">
@@ -274,11 +280,35 @@
                                 
     </div>
     <div class="text-right">
-    <button data-step="employee-details" disabled>Next</button>
+    <button (click)="submit(x)" (click)="form='step1'" [disabled]="!regform.valid">Next</button>
     </div>
-
+</form>
+<div class="container ml-auto hide"  [ngClass]="{'active': form=='step1'}">
+<table class="table table-scrolled table-striped">
+    <thead>
+        <tr>
+            <th width="10%">#</th>
+            <th width="10%">FirstName</th>
+            <th width="10%">LastName</th>
+            <th width="10%">Email</th>
+            <th width="15%">Phonenumber</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of array1;let i=index">
+            <td>{{i+1}}</td>
+            <td>{{item.firstname}}</td>
+            <td>{{item.lastname}}</td>
+            <td  width="10%">{{item.email}}</td>
+            <td width="15%">{{item.phonenum}}</td>
+        </tr>
+    </tbody>
+</table>
+<button (click)="form='step2'">Previous</button>
+</div>
+</div>
     <!-- <form [formGroup]="regform"  (ngSubmit)="regform.valid" novalidate> -->
-        <div class="row" id="employee-details">
+        <!-- <div class="row" id="employee-details">
             <div class="col-md-3 col-sm-6">
             <div class="form-group">
                 <label class="control-label">Employee Id</label>
@@ -405,7 +435,7 @@
             <button (click)="b='step2'">Previous</button>
             <button data-step="" disabled>Next</button>
         </div>
-        </div>
+        </div> -->
 <!-- </form> -->
 
 
@@ -539,9 +569,9 @@
     <button [disabled]="!regform.valid" (click)="b='step2'">Next</button>
 </div>
 </div> -->
-<input #box>
+<!-- <input #box>
 <button  (click)="send(box.value)">send</button>
 <div *ngFor="let i of values">
     <p>{{i}}</p>
-</div>
-</form>
+</div> -->
+

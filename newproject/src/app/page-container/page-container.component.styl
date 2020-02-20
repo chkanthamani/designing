@@ -1,0 +1,81 @@
+.accordion
+    .title-text
+        background #eceeef
+        padding 10px
+        margin 0px
+.emp-view
+    font-size 16px
+    color gray-dark
+    cursor pointer
+    transition 0.5s all ease
+.view-up
+    i
+        transition 0.5s all ease
+        transform rotate(180deg)
+.custom-switch
+    position relative
+    display inline-block
+    width 60px
+    height 34px
+    margin-bottom 0
+    input
+        opacity 0
+        width 0
+        height 0
+        &:checked + .slider
+            background #414446
+        &:checked + .slider:before
+            transform translateX(18px)
+    .slider
+        position absolute 
+        cursor pointer
+        top 0
+        left 0
+        right 0
+        bottom 0
+        background-color gray-light1
+        transition .4s
+        &:before
+            position absolute
+            content ""
+            height 26px
+            width 26px
+            left 4px
+            bottom 4px
+            background-color white
+            transition .4s
+        &.round
+            border-radius 34px
+            background #c5d0d8
+            &:before
+                border-radius 50%
+    &.switch-xs
+        height 20px
+        width 40px
+        .slider
+            &.round
+                &:before
+                    height 16px
+                    width 16px
+                    left 3px
+                    bottom 2px
+.card-body
+    .job-role-header
+        display flex
+        align-items center
+        justify-content space-between
+        margin-bottom 10px
+    .job-role-body
+        .job-designation
+            display flex
+            margin-bottom 10px
+            .job-course
+                border 1px solid #28a4f6
+                border-radius 6px
+                padding 2px 8px
+                color #28a4f6
+                margin-right 10px
+            .job-course-icon
+                color grey
+.dark
+    background #414446

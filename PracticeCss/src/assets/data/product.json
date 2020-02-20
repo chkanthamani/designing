@@ -1,0 +1,26 @@
+[{
+    "productname":"Samsung Galaxy",
+    "price": "10,999/-",
+    "description":"Samsung Galaxy S10 smartphone was launched in February"
+  },
+  {
+    "productname":"Redmi Note 5",
+    "price": "12,999/-",
+    "description":"Redmi Note 5 smartphone was launched in February 2019. The phone comes with a 6.10-inch touchscreen display and an aspect ratio of 19:9. Samsung Galaxy S10 is powered by a 1.9GHz octa-core Samsung Exynos 9820 SoC processor"
+  },
+  {
+    "productname":"Iphone",
+    "price": "44,999/-",
+    "description":"Iphone smartphone was launched in February 2019. The phone comes with a 6.10-inch touchscreen display and an aspect ratio of 19:9. Samsung Galaxy S10 is powered by a 1.9GHz octa-core Samsung Exynos 9820 SoC processor"
+  },
+  {
+    "productname":"Vivo",
+    "price": "15,999/-",
+    "description":"Vivo smartphone was launched in February 2019. The phone comes with a 6.10-inch touchscreen display and an aspect ratio of 19:9. Samsung Galaxy S10 is powered by a 1.9GHz octa-core Samsung Exynos 9820 SoC processor"
+  },
+  {
+    "productname":"Oppo",
+    "price": "10,999/-",
+    "description":"Oppo smartphone was launched in February 2019. The phone comes with a 6.10-inch touchscreen display and an aspect ratio of 19:9. Samsung Galaxy S10 is powered by a 1.9GHz octa-core Samsung Exynos 9820 SoC processor"
+  }
+]

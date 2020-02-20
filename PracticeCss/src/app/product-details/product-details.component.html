@@ -1,0 +1,20 @@
+<div class="product-details">
+    <h4 class="p-2">Product Details</h4>
+    <div class="product-list-details">
+        <div>
+            <span class="product">ProductName: </span>
+            <span class="product-desc">{{product.productname}}</span>
+        </div>
+        <div>
+            <span class="product">Price: </span>
+            <span class="product-desc">{{product.price}}</span>
+        </div>
+        <div>
+            <span class="product">Description: </span>
+            <span class="product-desc">{{product.description}}</span>
+        </div>
+        <div>
+            <button class="btn-buy" (click)="addToCart(product)">Buy</button>
+        </div>
+    </div>
+</div>

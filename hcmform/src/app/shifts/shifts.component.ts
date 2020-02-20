@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IMyDpOptions } from 'mydatepicker';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import * as $ from 'jquery';
 // import { log } from 'util';
 @Component({
   selector: 'app-shifts',
@@ -10,19 +11,29 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 export class ShiftsComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) { }
-  public myDatePickerOptions: IMyDpOptions = {
-    dateFormat: 'dd/mm/yyyy',
-    showTodayBtn: false,
-    firstDayOfWeek: 'mo',
+
+
+  public myDatePickerOption: IMyDpOptions = {
+    dateFormat: 'yyyy-mm-dd', // dd-mmm-yyyy
+    editableDateField: false,
+    showTodayBtn: true,
     sunHighlight: true,
-    todayBtnTxt: 'today',
-    satHighlight: true,
+    satHighlight: false,
     markCurrentDay: true,
-    showDecreaseDateBtn: true,
-    disableUntil: {
+    markCurrentMonth: true,
+    markCurrentYear: true,
+    inline: true,
+    selectorHeight: '232px',
+    selectorWidth: '252px',
+    height: '34px',
+    width: '100%',
+    componentDisabled: false,
+    showClearDateBtn: true,
+    openSelectorOnInputClick: true,
+    disableSince: {
       year: new Date().getFullYear(),
       month: new Date().getMonth() + 1,
-      day: new Date().getDate()-1
+      day: new Date().getDate() + 1
     }
   };
   regform:FormGroup;
@@ -41,18 +52,25 @@ export class ShiftsComponent implements OnInit {
         }
       }
     });
+
+    $(document).ready(function(){
+      $('.next').click(function(){
+        $('.pagination').find('.list-item .active').next().addClass('active');
+        $('.pagination').find('.list-item .active').prev().removeClass('active');
+        // if($('.list-item').children().hasClass('active'))
+        // {
+        //   $('.list-item').children('.active').removeClass('active');
+        //   $('.list-item').next('.list-item').children('.list-link').addClass('active')
+        // }
+      });
+      $('.prev').click(function(){
+        $('.pagination').find('.list-item .active').prev().addClass('active');
+        $('.pagination').find('.list-item .active').next().removeClass('active');
+      });
+    });
 }
 value:any
-open(x){
-  this.value= x.formatted;
+open(event:any){
+  this.value= event;
   console.log(this.value);
-   // this.value.patchValue({Date: new Date()});
-}
-
-enter(event:any) {
-  if(event.keyCode == 13) {
-    alert('you just clicked enter');
-    // rest of your code
-  }
-}
-}
+}}

@@ -1,0 +1,88 @@
+<app-header></app-header>
+<div class="container">
+    <div id="accordionExample" class="accordion">
+        <div class="card">
+            <div class="card-header" id="headerone" data-target="#collapseOne" data-toggle="collapse"
+                aria-expanded="false" aria-controls="collapseOne">
+                Accordion1
+            </div>
+            <div id="collapseTwo" data-parent="#accordionExample" class="collapse" aria-labelledby="headertwo">
+                    <div class="card-body">Welcome To Accordion-2</div>
+                </div>           
+        </div>
+        <div class="card">
+            <div class="card-header" id="headertwo" data-target="#collapseTwo" data-toggle="collapse"
+                aria-expanded="false" aria-controls="collapseTwo">
+                Accordion2
+            </div>
+            <div id="collapseOne" data-parent="#accordionExample" class="collapse" aria-labelledby="headerone">
+                    <div class="card-body">Welcome To Accordion-1</div>
+                </div>
+            
+        </div>
+        <div class="card">
+            <div class="card-header" id="headerthree" data-target="#collapseThree" data-toggle="collapse"
+                aria-expanded="false" aria-controls="collapseThree">
+                Accordion3
+            </div>
+
+            <div id="collapseThree" data-parent="#accordionExample" class="collapse" aria-labelledby="headerthree">
+                <div class="card-body">Welcome To Accordion-3</div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="accordion">
+        <div class="title-text" (click)="accordion()">Accordian-1</div><p class="content" *ngIf="variable">Welcome To Accordion-1</p>
+        <div class="title-text">Accordian-2</div><p class="content">Welcome To Accordion-1</p>
+        <div class="title-text">Accordian-3</div><p class="content">Welcome To Accordion-1</p>
+    </div> -->
+    <div class="emp-view" (click)="collapse(i)" [ngClass]="{'view-up': isToggle(i)}">
+        <i class="far fa-arrow-alt-circle-down"></i>
+    </div>
+    <div class="row" *ngIf="isToggle(i)">
+        <div class="col-md-6">
+            <label>Name</label>
+            <input type="text" class="form-control" placeholder="Enter Name">
+        </div>
+        <div class="col-md-6">
+            <label>Email</label>
+            <input type="text" class="form-control" placeholder="Enter Email">
+        </div>
+    </div>
+    <!-- <button class="btn btn-primary btn-xs" *ngIf="item.allowance_file" (click)="callPath(item)"><a
+        class="text-white" href="{{ downloadPath }}" target="new"><i
+          class="fas fa-download text-white"></i> </a></button>
+    <a *ngIf="item.allowance_file == null" target="new">-</a> -->
+    <label class="custom-switch switch-xs">
+        <input type="checkbox" checked (click)="switch($event)">
+        <div class="slider round"></div>
+    </label>
+    <div class="row">
+        <div class="col-md-12 job-main-content">
+            <div class="card">
+                <div class="card-header">Senior Designer</div>
+                <div class="card-body">
+                    <div class="job-role-header">
+                        <div>Technology</div>
+                        <div>Employess</div>
+                    </div>
+                    <div class="job-role-body">
+                        <div class="job-designation">
+                            <span class="job-course">Mysql</span>
+                            <span class="job-course">Mysql</span>
+                            <span class="job-course">Mysql</span>
+                            <span class="job-course">Mysql</span>
+                            <span class="job-course" (click)="viewmore()">View All</span>
+                        </div>
+                        <div class="job-designation" *ngIf="view">
+                            <span class="job-course">HTML</span>
+                            <span class="job-course">HTML</span>
+                            <span class="job-course">HTML</span>
+                            <span class="job-course">HTML</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

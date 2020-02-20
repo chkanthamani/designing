@@ -7,20 +7,27 @@ import {HeaderComponent} from './header/header.component';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import { PageContainerComponent } from './page-container/page-container.component';
 import { MyDatePickerModule } from 'mydatepicker';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsComponent } from './forms/forms.component';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { MultiselectComponent } from './multiselect/multiselect.component';
 @NgModule({
   declarations: [
     AppComponent,   
     DashboardComponent,
     HeaderComponent,
     SidebarComponent,
-    PageContainerComponent
-
+    PageContainerComponent,
+    FormsComponent,
+    MultiselectComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MyDatePickerModule
+    MyDatePickerModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularMultiSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,11 +1,155 @@
 <div class="container">
-    <form [formGroup]="regform">
-        <div class="row form-group">
-            <div class="col-3">     
-            <p>{{(value) || (mydate | date : 'mediumDate')}}</p>
-            <my-date-picker (dateChanged)="open($event)" [options]="myDatePickerOptions">
-        </my-date-picker>
+    <form id="regform" [formGroup]="regform">
+        <div class="row">
+            <div class="col-3">
+                <button class="btn btn-xs btn-sm btn-success  btn-outline" data-toggle="modal"  
+                    data-target="#myModal">Change</button>
+                <h4>{{(value)}}</h4>     
+            <!-- <my-date-picker (dateChanged)="open($event)" name='dob' formControlName="dob" [options]="myDatePickerOptions"></my-date-picker> -->
+            </div>
         </div>
-    </div>
     </form>
+        <div class="row">
+            <div class="col-sm-6">         
+                <div class="row mb-3">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="corner">A</div>
+                                <div class="card-header pt-1 pb-0">
+                                    <p>Shifts</p>
+                                    <p><i class="far fa-clock mr-1"></i>8:00-13:00</p>
+                                </div>
+                                <hr class="m-0">
+                                <div class="card-b px-2">
+                                    <div class="card-set">
+                                        <h4>20</h4>
+                                        <p class="para">Expected</p>
+                                    </div>
+                                    <div class="card-set">
+                                        <h4>0</h4>
+                                        <p class="para">Present</p>
+                                    </div>
+                                    <div class="card-set">
+                                        <h4>20</h4>
+                                        <p class="para">Absent</p>
+                                    </div>
+                                </div>   
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                            <div class="card">
+                                    <div class="corner">B</div>
+                                    <div class="card-header pt-1 pb-0">
+                                        <p>Shifts</p>
+                                        <p><i class="far fa-clock mr-1"></i>14:00-22:00</p>
+                                    </div>
+                                    <hr class="m-0">
+                                    <div class="card-b px-2">
+                                        <div class="card-set">
+                                            <h4>34</h4>
+                                            <p class="para">Expected</p>
+                                        </div>
+                                        <div class="card-set">
+                                            <h4>0</h4>
+                                            <p class="para">Present</p>
+                                        </div>
+                                        <div class="card-set">
+                                            <h4>34</h4>
+                                            <p class="para">Absent</p>
+                                        </div>
+                                    </div>   
+                            </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                    <div class="corner">G</div>
+                                    <div class="card-header pt-1 pb-0">
+                                        <p>Shifts</p>
+                                        <p><i class="far fa-clock mr-1"></i>8:00-13:00</p>
+                                    </div>
+                                    <hr class="m-0">
+                                    <div class="card-b px-2">
+                                        <div class="card-set">
+                                            <h4>46</h4>
+                                            <p class="para">Expected</p>
+                                        </div>
+                                        <div class="card-set">
+                                            <h4>0</h4>
+                                            <p class="para">Present</p>
+                                        </div>
+                                        <div class="card-set">
+                                            <h4>46</h4>
+                                            <p class="para">Absent</p>
+                                        </div>
+                                    </div>   
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                                <div class="card">
+                                        <div class="corner">off</div>
+                                        <div class="card-header pt-1 pb-0">
+                                            <p>Shifts</p>
+                                            <p><i class="far fa-clock mr-1"></i>14:00-22:00</p>
+                                        </div>
+                                        <hr class="m-0">
+                                        <div class="card-b px-2">
+                                            <div class="card-set">
+                                                <h4>26</h4>
+                                                <p class="para">Expected</p>
+                                            </div>
+                                            <div class="card-set">
+                                                <h4>0</h4>
+                                                <p class="para">Present</p>
+                                            </div>
+                                            <div class="card-set">
+                                                <h4>--</h4>
+                                                <p class="para">Absent</p>
+                                            </div>
+                                        </div>   
+                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                        <div class="card">
+                        <div class="card-header p-2">
+                            <h6 class="card-h">Top 5 Worked Hours on selected date</h6>
+                        </div>
+                        <div class="card-body">
+
+                        </div>
+                    </div>
+                </div>
+                    </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="pagination">
+                    <ul class="list-menu">
+                        <li class="prev"><a class="list-link">Prev</a></li>
+                        <li class="list-item"><a class="active list-link">1</a></li>
+                        <li class="list-item"><a class="list-link">2</a></li>
+                        <li class="list-item"><a class="list-link">3</a></li>
+                        <li class="list-item"><a class="list-link">4</a></li>
+                        <li class="next"><a class="list-link">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
 </div>
+<!-- <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-sm" style="width: 252px;">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Select Date</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 1px;">
+              <my-date-picker [options]="myDatePickerOption" 
+                (dateChanged)="open(mydatepicker.value)" name="dob" formControlName="dob"></my-date-picker>
+            </div>
+          </div>
+        </div>
+     </div> -->

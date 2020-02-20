@@ -1,0 +1,199 @@
+<div class="page-container">
+    <div class="page-content">
+        <form [formGroup]="regform">
+            <div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">First Name</label>
+                            <input type="text" placeholder="Enter Name" class="form-control" name="firstname"
+                                formControlName="firstname">
+                            <div *ngIf="(regform.get('firstname').errors && regform.get('firstname').touched)">
+                                <small class="text-danger" *ngIf="regform.get('firstname').errors.required">Please Enter
+                                    First Name</small>
+                                <small class="text-danger" *ngIf="regform.get('firstname').errors.minlength">Minimum 6
+                                    charaters required</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label1">Middle Name</label>
+                            <input type="text" placeholder="Enter Name" formControlName="mname" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">Last Name</label>
+                            <input type="text" placeholder="Enter Name" class="form-control" formControlName="lastname">
+                            <div *ngIf="(regform.get('lastname').errors && regform.get('lastname').touched)">
+                                <small class="text-danger" *ngIf="regform.get('lastname').errors.required">Please Enter
+                                    last
+                                    Name</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">DOB</label>
+                            <my-date-picker [options]="myDatePickerOptions" formControlName="dob"
+                                placeholder="dd/mm/yyyy">
+                            </my-date-picker>
+                            <div *ngIf="regform.get('dob').errors && (regform.get('dob').touched)">
+                                <small class="text-danger" *ngIf="regform.get('dob').errors.required">date of birth is
+                                    required</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="d-block">Gender</label>
+                            <span>
+                                <input type="radio" name="gender" value="male" formControlName="gender"
+                                    class="mr-2"><label>Male</label>
+                            </span>
+                            <span class="ml-3">
+                                <input type="radio" name="gender" value="female" formControlName="gender"
+                                    class="mr-2"><label>Female</label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">Personal email</label>
+                            <input type="text" class="form-control" placeholder="Enter email" formControlName="email">
+                            <div *ngIf="regform.get('email').errors && (regform.get('email').touched)">
+                                <small class="text-danger" *ngIf="regform.get('email').errors.required">email must be
+                                    filled</small>
+                                <small class="text-danger" *ngIf="regform.get('email').errors.pattern">email must be
+                                    valid email</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label">Contact No</label>
+                            <input type="text" class="form-control" placeholder="Entercontact No"
+                                formControlName="contactnum">
+                            <div *ngIf="regform.get('contactnum').errors && (regform.get('contactnum').touched)">
+                                <small class="text-danger" *ngIf="regform.get('contactnum').errors.required">contact
+                                    number is required</small>
+                                <small class="text-danger" *ngIf="(regform.get('contactnum').errors.minlength)">contact
+                                    number must be 10 numbers</small>
+                                <small class="text-danger" *ngIf="(regform.get('contactnum').errors.maxlength)">contact
+                                    number must be 10 numbers</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary float-right" (click)="submit()" [disabled]="!regform.valid">Next</button>
+            <button class="mr-2" (click)="add()"><i class="fas fa-plus"></i></button>
+            <button class="mr-2" (click)="remove()"><i class="fas fa-trash-alt"></i></button>
+        </form>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>middlename</th>
+                    <th>lastname</th>
+                    <th>dob</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Phone number</th>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody class="height-250">
+                <tr *ngFor="let item of array1">
+                    <td>{{item.firstname}}</td>
+                    <td>{{item.mname}}</td>
+                    <td>{{item.lastname}}</td>
+                    <td>{{item.dob.formatted}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.gender}}</td>
+                    <td>{{item.contactnum}}</td>
+                    <td>
+                        <button class="mr-2" data-toggle="modal" data-target="#add"><i class="fas fa-edit"></i></button>
+                        <button data-toggle="modal" data-target="#delete"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- <div class="example-box">
+            <span cdkDrag>Drag me around</span>
+          </div> -->
+    <!-- <div class="content" *ngFor="let item of details; let i= index">
+                <div class="content-details">First Name : {{item}}</div>
+                <div class="content-details">Middle Name : {{item}}</div>
+                <div class="content-details">Last Name : {{item}}</div>
+            </div> -->
+</div>
+
+<div class="modal fade" id="add" role="dialog">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="editform">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" placeholder="Enter firstname" formControlName="firstname">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Lastname</label>
+                                <input type="text" class="form-control" placeholder="Enter lastname" formControlName="lastname">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" class="form-control" placeholder="Enter mailID" formControlName="email">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Contact number</label>
+                                <input type="text" class="form-control" placeholder="Enter Phonenumber" formControlName="contactnum">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" (click)="edit()">Submit</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" role="dialog" id="delete">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure to delete?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success">Yes</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>

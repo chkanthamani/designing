@@ -1,1 +1,31 @@
-
+<div class="wrapper">
+    <main class="main mt-5 col-6">
+        <div class="chat-box-container">
+          <h1 class="chat-box-header">Chat AI</h1>
+          <p></p>
+          <div class="chat-box" >        
+              <div class="user" *ngFor="let i of user" >
+                <p >USER: {{i}}</p>
+              </div>
+              <div class="ai" *ngFor="let i of bot">
+                <p >BOT: {{i}}</p>
+              </div>       
+         </div>
+        </div>
+        <div class="chat-input-container">
+          <!-- <input class="chat-input" type="text" name="chat-input" #box> -->
+          <div class="column">
+            <form onsubmit="return false;" class="form">
+                <input class="effect-11" (keyup.enter)="onClickMe(box.value);box.value=''" type="text" name="chat-input" placeholder="Ask me something.." #box>
+                <span class="focus-bg"></span>
+                <button class="chat-submit" type="button"  name="submit" (click)="onClickMe(box.value);box.value=''"> <i class="fas fa-paper-plane"></i> </button> 
+                </form> 
+            </div>
+        </div>
+      </main>
+          <div class="circle" data-toggle="tooltip" data-placement="top" title="Chat with a Bot">
+            <div class="bot">
+            <i class="fas fa-robot"></i>
+            </div>        
+          </div>
+        </div>

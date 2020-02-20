@@ -28,14 +28,12 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
               "src/styles.styl",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.css"
+              "src/assets/stylus/stylus.styl"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.slim.min.js",
-              "node_modules/popper.js/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {

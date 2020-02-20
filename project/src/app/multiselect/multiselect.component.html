@@ -1,0 +1,20 @@
+<div class="multi-select-dropdown">
+    <div class="title">Multiselect dropdown</div>
+    <div class="multiselect">
+        <div class="multi-inputfield">
+            <input class="form-control" name="dropdowntitle" [(ngModel)]="dropdowntitle" (click)="dropdown()"
+                value="{{dummyarray}}">
+            <div class="multi-icon"><i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="multi-inputchild" [ngClass]="{ show: title >= 1}">
+            <ul class="multi-list">
+                <li *ngFor="let item of dataList; let i = index">
+                    <span class="input-check">
+                        <input type="checkbox" class="form-control" (click)="select($event,item)">
+                    </span>
+                    <span><a>{{item.name}}</a></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

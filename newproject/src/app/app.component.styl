@@ -1,0 +1,89 @@
+.chat-box
+    display flex
+    align-items center
+    justify-content space-between
+    &-title
+        font-size 1.5rem
+    &-icon
+        margin-right 8px
+
+.smiley,.smiley-sad
+    width 50px
+    height 50px
+    border 1px solid #dddcdc
+    background yellow
+    border-radius 50%
+    position relative
+    box-shadow 1px 2px 3px 0px #8b834b4f
+    margin-right 10px
+    &:before,&:after
+        content ''
+        display block
+        position absolute
+        width 6px
+        height 9px
+        top 12px 
+        left 14px
+        border 1px solid grey 
+        border-radius 50%
+        background #fff
+        border-bottom 4px solid black
+        animation eyeblink 2s infinite
+    &:hover
+        background yellow
+        span
+            height 20px
+            width 20px
+            border-radius 50%
+            border-top 2px solid black
+            position absolute
+            top 28px
+            left 14px
+            border-bottom transparent
+    &:after
+        left 30px 
+    span 
+        height 24px
+        width 24px
+        border-radius 50%
+        border-bottom 2px solid black
+        position absolute
+        bottom 10px
+        left 13px
+.smiley-sad
+    span
+        height 20px
+        width 20px
+        border-radius 50%
+        border-top 2px solid black
+        position absolute
+        top 28px
+        left 14px
+        border-bottom transparent
+    
+.pagination
+    width 270px
+    height 50px
+    border-radius 4px
+    background teal
+    color white
+    margin-top 10px
+    .page-menu
+        display flex
+        list-style none
+        margin 0
+        padding 0
+        &-num
+            padding 10px
+
+@keyframes eyeblink
+    0%, 100% 
+        transform scale(0)  
+    5%,95%
+        transform scale(1)
+
+
+
+
+
+

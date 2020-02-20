@@ -1,0 +1,146 @@
+<div class="dashboard-header">
+    <div class="dashboard-header-logo">
+        <img src="../assets/industry.jpg">
+    </div>
+    <div class="dashboard-header-items">
+        <div class="search">
+            <input type="text" class="form-control" placeholder="Search">
+            <span><i class="fas fa-search"></i></span>
+        </div>
+        <div class="notification">
+            <span> <i class="far fa-bell"></i></span>
+        </div>
+        <div class="profile">
+            <img src="../assets/businessman.jpg">
+        </div>
+    </div>
+</div>
+<div class="dashboard-sidemenu">
+    <div class="sidemenu-icon"><i class="fas fa-briefcase"></i></div>
+    <div class="sidemenu-icon"><i class="fas fa-industry"></i></div>
+    <div class="sidemenu-icon"><i class="fas fa-cog"></i></div>
+</div>
+<div class="dashboard-page-content">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="dashboard-minicard">
+                            <div class="minicard-icon"><i class="fas fa-industry"></i></div>
+                            <div>
+                                <div class="minicard-count">60</div>
+                                <div class="minicard-location">Site Locations</div>
+                            </div>
+                            <div>
+                                <div class="minicard-count">126</div>
+                                <div class="minicard-location">HVAC</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div>Device Availability</div>
+                                <div class="minicard-location">65 Locations</div>
+                            </div>
+                            <input type="text" class="form-control card-header-input" placeholder="Search">
+                        </div>
+                        <div class="card-body">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th width="12%">Location</th>
+                                        <th width="30%" class="text-center">Asset Status</th>
+                                        <th width="12%">Device</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of loctaion; let i = index">
+                                        <td width="12%">{{item.location}}</td>
+                                        <td width="30%" class="text-center location-tabledata">
+                                            <span class="badge badge-success" *ngIf="item.status == '1'">Online</span>
+                                            <span class="badge badge-danger" *ngIf="item.status == '0'">Offline</span>
+                                        </td>
+                                        <td width="12%">{{item.Device}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div>
+                                        <span class="card-header-icon"><i class="fas fa-fan"></i></span>
+                                        <span class="card-header-title">HVAC Status</span>
+                                    </div>
+                                </div>
+                                <div class="card-body count-list">
+                                    <ul>
+                                        <li>
+                                            <div class="hvac-list">
+                                                <div>Needs Attention</div>
+                                                <div>07</div>
+                                            </div>
+                                        </li>
+                                        <li class="green">
+                                            <div class="hvac-list">
+                                                <div>Working Condition</div>
+                                                <div>58</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="hvac-list-lastupdated">Last Updated : Today,13:00 pm</div>
+                                    <div class="hvac-footer">Details</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div>
+                                        <span class="card-header-icon"><i class="fas fa-fan"></i></span>
+                                        <span class="card-header-title">Mains Status</span>
+                                    </div>
+                                </div>
+                                <div class="card-body count-list">
+                                    <ul>
+                                        <li>
+                                            <div class="hvac-list">
+                                                <div class="list-name">Needs Attention</div>
+                                                <div class="list-num">07</div>
+                                            </div>
+                                        </li>
+                                        <li class="green">
+                                            <div class="hvac-list">
+                                                <div>Working Condition</div>
+                                                <div>58</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="hvac-list-lastupdated">Last Updated : Today,13:00 pm</div>
+                                    <div class="hvac-footer">Details</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12"></div>
+                <div class="col-md-12"></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+</div>
